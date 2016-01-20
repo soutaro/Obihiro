@@ -17,3 +17,5 @@ FOUNDATION_EXPORT const unsigned char ObihiroVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Obihiro/PublicHeader.h>
 
 
+#import <Obihiro/OBHViewControllerObject.h>
+#import <Obihiro/OBHNavigationControllerObject.h>
