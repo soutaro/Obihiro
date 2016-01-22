@@ -47,6 +47,8 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }
     self.classRegistory = [NSMutableDictionary new];
     
+    [self initializeObject];
+    
     return self;
 }
 
