@@ -59,7 +59,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 }
 
 - (void)dealloc {
-    if (self.isPresented) {
+    if (self.isPresented && self.viewController.parentViewController == nil) {
         [self dismissViewController];
     }
 }
@@ -186,7 +186,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }
 
     if (self.viewController.parentViewController) {
-        NSLog(@"%s Cannot dismiss ViewController because it has parentViewController: parentViewController=%@", __PRETTY_FUNCTION__, self.viewController.parentViewController);
+        NSLog(@"%s Cannot dismiss ViewController because it has parentViewController: %@, parentViewController=%@", __PRETTY_FUNCTION__, self, self.viewController.parentViewController);
         return;
     }
 
