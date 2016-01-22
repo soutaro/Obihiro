@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 
 @class OBHNavigationControllerObject;
+@class OBHAlertControllerObject;
 
 @interface OBHViewControllerObject<ViewController: UIViewController *> : NSObject
 
@@ -50,6 +51,7 @@
 #pragma mark -
 
 - (__kindof OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass;
+- (OBHAlertControllerObject *)alertObject;
 
 #pragma mark - Views
 

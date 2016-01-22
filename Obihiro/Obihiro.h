@@ -19,3 +19,4 @@ FOUNDATION_EXPORT const unsigned char ObihiroVersionString[];
 
 #import <Obihiro/OBHViewControllerObject.h>
 #import <Obihiro/OBHNavigationControllerObject.h>
+#import <Obihiro/OBHAlertControllerObject.h>

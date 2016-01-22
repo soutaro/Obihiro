@@ -2,6 +2,7 @@
 #import "UIViewController+OBH.h"
 #import "OBHViewControllerObjectRef.h"
 #import "OBHNavigationControllerObject.h"
+#import "OBHAlertControllerObject.h"
 
 static NSTimeInterval runLoopTimeout = 0.1;
 
@@ -120,6 +121,10 @@ static NSTimeInterval runLoopTimeout = 0.1;
     } else {
         return nil;
     }
+}
+
+- (OBHAlertControllerObject *)alertObject {
+    return [self presentedObjectOfViewControllerClass:[UIAlertController class]];
 }
 
 #pragma mark - View
@@ -288,6 +293,10 @@ static NSTimeInterval runLoopTimeout = 0.1;
         } else {
             if ([klass isSubclassOfClass:[UINavigationController class]]) {
                 return [OBHNavigationControllerObject class];
+            }
+            
+            if ([klass isSubclassOfClass:[UIAlertController class]]) {
+                return [OBHAlertControllerObject class];
             }
             
             return [OBHViewControllerObject class];

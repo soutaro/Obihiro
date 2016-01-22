@@ -20,6 +20,8 @@
 		AB6758161C4F00050006EB9E /* OBHNavigationControllerObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6758141C4F00050006EB9E /* OBHNavigationControllerObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB6758171C4F00050006EB9E /* OBHNavigationControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6758151C4F00050006EB9E /* OBHNavigationControllerObject.m */; };
 		AB6758191C4F01CC0006EB9E /* OBHViewControllerObject+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6758181C4F01C80006EB9E /* OBHViewControllerObject+Private.h */; };
+		AB6758321C5222B50006EB9E /* OBHAlertControllerObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6758301C5222B50006EB9E /* OBHAlertControllerObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB6758331C5222B50006EB9E /* OBHAlertControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6758311C5222B50006EB9E /* OBHAlertControllerObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		AB6758141C4F00050006EB9E /* OBHNavigationControllerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBHNavigationControllerObject.h; sourceTree = "<group>"; };
 		AB6758151C4F00050006EB9E /* OBHNavigationControllerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBHNavigationControllerObject.m; sourceTree = "<group>"; };
 		AB6758181C4F01C80006EB9E /* OBHViewControllerObject+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OBHViewControllerObject+Private.h"; sourceTree = "<group>"; };
+		AB6758301C5222B50006EB9E /* OBHAlertControllerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBHAlertControllerObject.h; sourceTree = "<group>"; };
+		AB6758311C5222B50006EB9E /* OBHAlertControllerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBHAlertControllerObject.m; sourceTree = "<group>"; };
 		B2E62A1DF2F9C8D01F747887 /* libPods-Obihiro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Obihiro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -125,6 +129,8 @@
 				AB6757F01C4EF15A0006EB9E /* Obihiro.h */,
 				AB67580B1C4EF5DA0006EB9E /* UIViewController+OBH.h */,
 				AB67580C1C4EF5DA0006EB9E /* UIViewController+OBH.m */,
+				AB6758301C5222B50006EB9E /* OBHAlertControllerObject.h */,
+				AB6758311C5222B50006EB9E /* OBHAlertControllerObject.m */,
 			);
 			path = Obihiro;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 				AB6758111C4EF8900006EB9E /* OBHViewControllerObjectRef.h in Headers */,
 				AB6757F11C4EF15A0006EB9E /* Obihiro.h in Headers */,
 				AB6758191C4F01CC0006EB9E /* OBHViewControllerObject+Private.h in Headers */,
+				AB6758321C5222B50006EB9E /* OBHAlertControllerObject.h in Headers */,
 				AB6758161C4F00050006EB9E /* OBHNavigationControllerObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB6758331C5222B50006EB9E /* OBHAlertControllerObject.m in Sources */,
 				AB67580E1C4EF5DA0006EB9E /* UIViewController+OBH.m in Sources */,
 				AB67580A1C4EF1690006EB9E /* OBHViewControllerObject.m in Sources */,
 				AB6758171C4F00050006EB9E /* OBHNavigationControllerObject.m in Sources */,
