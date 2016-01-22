@@ -24,6 +24,8 @@
 @property (nonatomic, readonly) BOOL isLeftButtonAvailable;
 @property (nonatomic, readonly) BOOL isRightButtonAvailable;
 
+- (void)tapRightButton;
+
 #pragma mark - Navigation
 
 - (void)back;

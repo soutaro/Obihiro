@@ -59,6 +59,17 @@
     return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
 }
 
+- (void)tapRightButton {
+    if (!self.isRightButtonAvailable) {
+        return;
+    }
+    
+    UIBarButtonItem *button = self.topObject.viewController.navigationItem.rightBarButtonItem;
+    [self simulateUserAction:^{
+        [button.target performSelector:button.action withObject:button];
+    }];
+}
+
 #pragma mark - Navigation
 
 - (void)back {
