@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB6757EC1C4EF15A0006EB9E"
-               BuildableName = "Obihiro.framework"
+               BlueprintIdentifier = "ABB888D11C542EB10075E438"
+               BuildableName = "Obihiro.app"
                BlueprintName = "Obihiro"
                ReferencedContainer = "container:Obihiro.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB6757F61C4EF15B0006EB9E"
+               BlueprintIdentifier = "ABB888EA1C542EB10075E438"
                BuildableName = "ObihiroTests.xctest"
                BlueprintName = "ObihiroTests"
                ReferencedContainer = "container:Obihiro.xcodeproj">
@@ -42,8 +42,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB6757EC1C4EF15A0006EB9E"
-            BuildableName = "Obihiro.framework"
+            BlueprintIdentifier = "ABB888D11C542EB10075E438"
+            BuildableName = "Obihiro.app"
             BlueprintName = "Obihiro"
             ReferencedContainer = "container:Obihiro.xcodeproj">
          </BuildableReference>
@@ -61,15 +61,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB6757EC1C4EF15A0006EB9E"
-            BuildableName = "Obihiro.framework"
+            BlueprintIdentifier = "ABB888D11C542EB10075E438"
+            BuildableName = "Obihiro.app"
             BlueprintName = "Obihiro"
             ReferencedContainer = "container:Obihiro.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -79,15 +80,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB6757EC1C4EF15A0006EB9E"
-            BuildableName = "Obihiro.framework"
+            BlueprintIdentifier = "ABB888D11C542EB10075E438"
+            BuildableName = "Obihiro.app"
             BlueprintName = "Obihiro"
             ReferencedContainer = "container:Obihiro.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

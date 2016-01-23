@@ -8,15 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for Obihiro.
-FOUNDATION_EXPORT double ObihiroVersionNumber;
-
-//! Project version string for Obihiro.
-FOUNDATION_EXPORT const unsigned char ObihiroVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Obihiro/PublicHeader.h>
-
-
 #import <Obihiro/OBHViewControllerObject.h>
 #import <Obihiro/OBHNavigationControllerObject.h>
 #import <Obihiro/OBHAlertControllerObject.h>
