@@ -52,6 +52,7 @@
 
 - (__kindof OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass;
 - (OBHAlertControllerObject *)alertObject;
+@property (nonatomic, readonly) BOOL hasAlert;
 
 #pragma mark - Views
 
