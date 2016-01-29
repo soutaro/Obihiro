@@ -6,8 +6,12 @@ static NSBundle *OBHLocalizedBundle = nil;
 @implementation NSBundle (OBH)
 
 + (void)setMessageLocalizationLocale:(NSString *)localeString {
-    NSString *path = [[NSBundle mainBundle] pathForResource:localeString ofType:@"lproj"];
-    OBHLocalizedBundle = [NSBundle bundleWithPath:path];
+    if (localeString) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:localeString ofType:@"lproj"];
+        OBHLocalizedBundle = [NSBundle bundleWithPath:path];
+    } else {
+        OBHLocalizedBundle = nil;
+    }
 }
 
 #pragma mark -
