@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB6D6CB51C5B137C00FA79D1 /* NSBundle+OBH.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */; };
 		ABB888F01C542EB10075E438 /* ObihiroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888EF1C542EB10075E438 /* ObihiroTests.m */; };
 		ABB888FD1C542F520075E438 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888FC1C542F520075E438 /* main.m */; };
 		ABB889031C542F660075E438 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888FF1C542F660075E438 /* AppDelegate.m */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB6D6CB31C5B137C00FA79D1 /* NSBundle+OBH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+OBH.h"; sourceTree = "<group>"; };
+		AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+OBH.m"; sourceTree = "<group>"; };
 		ABB888D21C542EB10075E438 /* Obihiro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Obihiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB888EB1C542EB10075E438 /* ObihiroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObihiroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB888EF1C542EB10075E438 /* ObihiroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObihiroTests.m; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 		ABB888D41C542EB10075E438 /* Obihiro */ = {
 			isa = PBXGroup;
 			children = (
+				AB6D6CB31C5B137C00FA79D1 /* NSBundle+OBH.h */,
+				AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */,
 				ABB889121C5430DB0075E438 /* OBHAlertControllerObject.h */,
 				ABB889131C5430DB0075E438 /* OBHAlertControllerObject.m */,
 				ABB889141C5430DB0075E438 /* OBHNavigationControllerObject.h */,
@@ -251,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB6D6CB51C5B137C00FA79D1 /* NSBundle+OBH.m in Sources */,
 				ABB889031C542F660075E438 /* AppDelegate.m in Sources */,
 				ABB889201C5430DB0075E438 /* OBHViewControllerObject.m in Sources */,
 				ABB889221C5430DB0075E438 /* UIViewController+OBH.m in Sources */,
@@ -388,6 +394,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.Obihiro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -399,6 +406,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soutaro.Obihiro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
