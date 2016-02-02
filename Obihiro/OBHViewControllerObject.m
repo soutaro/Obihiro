@@ -109,6 +109,10 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return [self childObjectsOfViewControllerClass:klass].firstObject;
 }
 
+- (OBHViewControllerObject *)objectWithViewController:(UIViewController *)viewController {
+    return [self childObjectWithViewController:viewController];
+}
+
 #pragma mark -
 
 - (OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass {
@@ -118,6 +122,18 @@ static NSTimeInterval runLoopTimeout = 0.1;
     
     if (presentedViewController && [presentedViewController isKindOfClass:klass]) {
         return [self childObjectWithViewController:presentedViewController];
+    } else {
+        return nil;
+    }
+}
+
+- (OBHViewControllerObject *)presentedPopoverObject {
+    [self ensureAllViewsDidAppear];
+    
+    UIViewController *presentedViewController = self.viewController.presentedViewController;
+    
+    if (presentedViewController && presentedViewController.modalPresentationStyle == UIModalPresentationPopover) {
+        return [self objectWithViewController:presentedViewController];
     } else {
         return nil;
     }
@@ -237,6 +253,26 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return [self.class waitFor:test timeout:self.defaultTimeout];
 }
 
+- (BOOL)eventually:(BOOL (^)())test {
+    return [self.class eventually:test timeout:self.defaultTimeout];
+}
+
+- (BOOL)eventuallyNotNil:(id (^)())test {
+    return [self eventually:^BOOL{
+        return test() != nil;
+    }];
+}
+
+- (BOOL)globally:(BOOL (^)())test {
+    return [self.class globally:test forSeconds:self.defaultTimeout];
+}
+
+- (BOOL)globallyNotNil:(id (^)())test {
+    return [self globally:^BOOL{
+        return test() != nil;
+    }];
+}
+
 + (BOOL)allViewControllersDidAppear {
     return OBHAppearingViewControllerCount == 0;
 }
@@ -261,6 +297,34 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }
     
     return test();
+}
+
++ (BOOL)eventually:(BOOL (^)())test timeout:(NSTimeInterval)timeout {
+    NSDate *end = [NSDate dateWithTimeIntervalSinceNow:timeout];
+    
+    while ([[NSDate date] compare:end] == NSOrderedAscending) {
+        [self.class runLoopForAWhile];
+        
+        if (test()) {
+            return YES;
+        }
+    }
+    
+    return test();
+}
+
++ (BOOL)globally:(BOOL (^)())test forSeconds:(NSTimeInterval)seconds {
+    NSDate *end = [NSDate dateWithTimeIntervalSinceNow:seconds];
+    
+    while ([[NSDate date] compare:end] == NSOrderedAscending) {
+        [self.class runLoopForAWhile];
+        
+        if (!test()) {
+            return NO;
+        }
+    }
+    
+    return !test();
 }
 
 #pragma mark - Cache and factory

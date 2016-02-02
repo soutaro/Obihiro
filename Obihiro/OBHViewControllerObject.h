@@ -48,9 +48,12 @@
 - (NSArray<__kindof OBHViewControllerObject *> *)childObjectsOfViewControllerClass:(Class)klass;
 - (__kindof OBHViewControllerObject *)firstChildObjectOfViewControllerClass:(Class)klass;
 
+- (__kindof OBHViewControllerObject *)objectWithViewController:(UIViewController *)viewController;
+
 #pragma mark -
 
 - (__kindof OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass;
+- (__kindof OBHViewControllerObject *)presentedPopoverObject;
 - (OBHAlertControllerObject *)alertObject;
 @property (nonatomic, readonly) BOOL hasAlert;
 
@@ -119,6 +122,12 @@
  */
 - (BOOL)waitFor:(BOOL(^)())test;
 
+- (BOOL)eventually:(BOOL(^)())test;
+- (BOOL)eventuallyNotNil:(id(^)())test;
+
+- (BOOL)globally:(BOOL(^)())test;
+- (BOOL)globallyNotNil:(id(^)())test;
+
 /**
  Blocks until `test` returns true.
  
@@ -126,6 +135,9 @@
  Returns false when timed out.
  */
 + (BOOL)waitFor:(BOOL (^)())test timeout:(NSTimeInterval)timeout;
+
++ (BOOL)eventually:(BOOL(^)())test timeout:(NSTimeInterval)timeout;
++ (BOOL)globally:(BOOL(^)())test forSeconds:(NSTimeInterval)seconds;
 
 /**
  Returns true if there is no ViewController appearing/disappearing.
