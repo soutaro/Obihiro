@@ -30,7 +30,11 @@ NSUInteger OBHAppearingViewControllerCount = 0;
     [self viewDidAppearWithNotification:animated];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        OBHAppearingViewControllerCount -= 1;
+        if (OBHAppearingViewControllerCount == 0) {
+            NSLog(@"It seems there is a view controller receiving viewDidAppear:animated without viewWillAppear: %@", self);
+        } else {
+            OBHAppearingViewControllerCount -= 1;
+        }
     });
 }
 
@@ -44,7 +48,11 @@ NSUInteger OBHAppearingViewControllerCount = 0;
     [self viewDidDisappearWithNotification:animated];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        OBHAppearingViewControllerCount -= 1;
+        if (OBHAppearingViewControllerCount == 0) {
+            NSLog(@"It seems there is a view controller receiving viewDidDisappear:animated without viewWillDisappear: %@", self);
+        } else {
+            OBHAppearingViewControllerCount -= 1;
+        }
     });
 }
 
