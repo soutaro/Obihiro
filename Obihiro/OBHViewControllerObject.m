@@ -11,6 +11,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 @property (nonatomic) OBHViewControllerObject *parentObject;
 @property (nonatomic) NSMutableArray<OBHViewControllerObjectRef *> *objectRefs;
 @property (nonatomic) NSMutableDictionary<NSString *, Class> *classRegistory;
+@property (nonatomic) BOOL isPresentedByObject;
 
 @end
 
@@ -62,7 +63,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 }
 
 - (void)dealloc {
-    if (self.isPresented && self.viewController.parentViewController == nil) {
+    if (self.isPresented && self.isPresentedByObject && self.viewController.parentViewController == nil) {
         [self dismissViewController];
     }
 }
@@ -195,6 +196,8 @@ static NSTimeInterval runLoopTimeout = 0.1;
         return;
     }
     
+    self.isPresentedByObject = YES;
+    
     id<UIApplicationDelegate> delegate = [UIApplication sharedApplication].delegate;
     UIWindow *window = delegate.window;
     
@@ -218,6 +221,10 @@ static NSTimeInterval runLoopTimeout = 0.1;
         NSLog(@"%s Cannot dismiss ViewController because it has parentViewController: %@, parentViewController=%@", __PRETTY_FUNCTION__, self, self.viewController.parentViewController);
         return;
     }
+    
+    if (!self.isPresentedByObject) {
+        NSLog(@"%s The ViewController is not presented by object, are you sure?: %@, viewController=%@", __PRETTY_FUNCTION__, self, self.viewController);
+    }
 
     __block BOOL done = NO;
     [self.viewController.presentingViewController dismissViewControllerAnimated:NO completion:^{
@@ -225,6 +232,8 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }];
     
     [self waitFor:^{ return done; }];
+    
+    self.isPresentedByObject = NO;
 }
 
 - (BOOL)isPresented {
