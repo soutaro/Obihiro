@@ -344,7 +344,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }
     
     for (OBHViewControllerObjectRef *ref in self.objectRefs) {
-        if ([ref.viewController isEqual:viewController]) {
+        if ([ref.viewController isEqual:viewController] && ref.object) {
             return ref.object;
         }
     }
