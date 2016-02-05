@@ -40,21 +40,54 @@
 - (void)registerObjectClass:(Class)objectClass forViewControllerClass:(Class)viewControllerClass;
 
 /**
+ Shortcut for `registerObjectClass:forViewControllerClass:`.
+ It takes class of View Controller Object, and guess the class of ViewController based on its name.
+ 
+ * Assumes the name of Object class has suffix of `Object`
+ * Assumes the name of ViewController class can be obtained by dropping `Object` suffix
  */
 - (void)registerObjectClass:(Class)objectClass;
 
 #pragma mark - ViewController Containment
 
+/**
+ Returns objects associated with immediate child view controllers of given class.
+ */
 - (NSArray<__kindof OBHViewControllerObject *> *)childObjectsOfViewControllerClass:(Class)klass;
+
+/**
+ Returns first object from `childObjectsOfViewControllerClass:`.
+ */
 - (__kindof OBHViewControllerObject *)firstChildObjectOfViewControllerClass:(Class)klass;
 
+/**
+ Returns ViewController Object associated with given `viewController`.
+ 
+ * Referes cache so that if you call twice with same View Controller instance, returns same object
+ * Intances View Controller Objects based on registory
+ */
 - (__kindof OBHViewControllerObject *)objectWithViewController:(UIViewController *)viewController;
 
 #pragma mark -
 
+/**
+ Returns object for View Controller of given class presented by the View Controller associated to this object.
+ */
 - (__kindof OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass;
+
+/**
+ Returns object for View Controller presented by as Popover by the View Controller associated to this object.
+ */
 - (__kindof OBHViewControllerObject *)presentedPopoverObject;
+
+/**
+ Returns object for UIAlertController presented by as Popover by the View Controller associated to this object.
+ */
 - (OBHAlertControllerObject *)alertObject;
+
+/**
+ Returns true when alert is presented.
+ */
 @property (nonatomic, readonly) BOOL hasAlert;
 
 #pragma mark - Views
@@ -76,6 +109,10 @@
 
 #pragma mark - User Action
 
+/**
+ Run given block and then wait for a while.
+ The wait inserted after block execution lets run Main Thread to do something associated action.
+ */
 - (void)simulateUserAction:(void(^)())action;
 
 #pragma mark - Present/Dismiss
