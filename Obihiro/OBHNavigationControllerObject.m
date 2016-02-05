@@ -66,7 +66,10 @@
     
     UIBarButtonItem *button = self.topObject.viewController.navigationItem.rightBarButtonItem;
     [self simulateUserAction:^{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [button.target performSelector:button.action withObject:button];
+#pragma clang diagnostic pop
     }];
 }
 

@@ -33,7 +33,10 @@
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
     
     UIAlertAction *action = self.viewController.actions[index];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     void (^handler)(UIAlertAction *) = [action performSelector:@selector(handler)];
+#pragma clang diagnostic pop
     if (handler) {
         handler(action);
     }
