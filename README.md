@@ -1,6 +1,6 @@
 # Obihiro - Page Object for View Controller
 
-Testing View Controllers matter, but it is still difficult.
+Testing View Controllers makes sense, I believe, but is still difficult.
 The main difficulties should be the following two.
 
 1. The UI changes a lot, and the test easily can be out of date
@@ -44,6 +44,12 @@ This library also provides some primitives to work with asynchronous View Contro
 * It provides `waitFor:` to make your tests stable by waiting completion of some status change
 
 ## Getting Started
+
+You can install Obihiro via cocoapods.
+
+```rb
+pod 'Obihiro'
+```
 
 Your object definition would look like the following:
 
@@ -142,7 +148,51 @@ It allows your View Controller Object to instantiate custom class for Child View
 }
 ```
 
+### UINavigationController
+
 It is shipped with default Object class for `UINavigationController`, one of the most frequently used View Controller Container.
+
+```objc
+OBHNavigationControllerObject *navigationObject = [OBHNavigationControllerObject objectWithViewController:navigationViewController];
+```
+
+It provides some API for View Controller stack operations; like getting object associated with View Controller which is on the top of navigation stack.
+
+```objc
+YourViewControllerObject *object = [navigationObject topObjectOfViewControllerClass:[YourViewController class]];
+
+[navigationObject back];
+```
+
+Also has operations for UIBarButtonItems.
+
+```objc
+XCTAssertTrue(navigationObject.isRightButtonAvailable);
+
+[navigationObject tapRightButton];
+```
+
+### Popover and Alert
+
+`OBHViewControllerObject` allows to access to popover presented its by View Controller.
+It assumes the popover is managed by `UIPopoverPresentedController`, not `UIPopoverController`.
+
+```objc
+OBHViewControllerObject *object;
+
+XCTAssertNotNil(object.presentedPopoverObject);
+```
+
+It also allows to access to UIAlertController.
+
+```objc
+OBHViewControllerObject *object;
+
+OBHAlertControllerObject *alertObject = object.alertObject;
+XCTAssertEqualObjects(@["OK"], alertObject.titles);
+
+[alertObject tapAlertButtonForTitles:@"OK"];
+```
 
 ## Simulating Use Actions
 
