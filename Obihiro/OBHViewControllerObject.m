@@ -3,6 +3,7 @@
 #import "OBHViewControllerObjectRef.h"
 #import "OBHNavigationControllerObject.h"
 #import "OBHAlertControllerObject.h"
+#import "OBHTableViewControllerObject.h"
 
 static NSTimeInterval runLoopTimeout = 0.1;
 
@@ -376,6 +377,10 @@ static NSTimeInterval runLoopTimeout = 0.1;
             
             if ([klass isSubclassOfClass:[UIAlertController class]]) {
                 return [OBHAlertControllerObject class];
+            }
+            
+            if ([klass isSubclassOfClass:[UITableViewController class]]) {
+                return [OBHTableViewControllerObject class];
             }
             
             return [OBHViewControllerObject class];

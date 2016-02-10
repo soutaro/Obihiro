@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB6D6CB51C5B137C00FA79D1 /* NSBundle+OBH.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */; };
+		AB91382D1C6BB62D00F3D820 /* OBHTableViewControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AB91382C1C6BB62D00F3D820 /* OBHTableViewControllerObject.m */; };
 		ABB888F01C542EB10075E438 /* ObihiroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888EF1C542EB10075E438 /* ObihiroTests.m */; };
 		ABB888FD1C542F520075E438 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888FC1C542F520075E438 /* main.m */; };
 		ABB889031C542F660075E438 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888FF1C542F660075E438 /* AppDelegate.m */; };
@@ -36,6 +37,8 @@
 /* Begin PBXFileReference section */
 		AB6D6CB31C5B137C00FA79D1 /* NSBundle+OBH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+OBH.h"; sourceTree = "<group>"; };
 		AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+OBH.m"; sourceTree = "<group>"; };
+		AB91382B1C6BB62D00F3D820 /* OBHTableViewControllerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBHTableViewControllerObject.h; sourceTree = "<group>"; };
+		AB91382C1C6BB62D00F3D820 /* OBHTableViewControllerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBHTableViewControllerObject.m; sourceTree = "<group>"; };
 		ABB888D21C542EB10075E438 /* Obihiro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Obihiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB888EB1C542EB10075E438 /* ObihiroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObihiroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB888EF1C542EB10075E438 /* ObihiroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObihiroTests.m; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				ABB889131C5430DB0075E438 /* OBHAlertControllerObject.m */,
 				ABB889141C5430DB0075E438 /* OBHNavigationControllerObject.h */,
 				ABB889151C5430DB0075E438 /* OBHNavigationControllerObject.m */,
+				AB91382B1C6BB62D00F3D820 /* OBHTableViewControllerObject.h */,
+				AB91382C1C6BB62D00F3D820 /* OBHTableViewControllerObject.m */,
 				ABB889161C5430DB0075E438 /* OBHViewControllerObject.h */,
 				ABB889171C5430DB0075E438 /* OBHViewControllerObject.m */,
 				ABB889181C5430DB0075E438 /* OBHViewControllerObject+Private.h */,
@@ -258,6 +263,7 @@
 			files = (
 				AB6D6CB51C5B137C00FA79D1 /* NSBundle+OBH.m in Sources */,
 				ABB889031C542F660075E438 /* AppDelegate.m in Sources */,
+				AB91382D1C6BB62D00F3D820 /* OBHTableViewControllerObject.m in Sources */,
 				ABB889201C5430DB0075E438 /* OBHViewControllerObject.m in Sources */,
 				ABB889221C5430DB0075E438 /* UIViewController+OBH.m in Sources */,
 				ABB8891E1C5430DB0075E438 /* OBHAlertControllerObject.m in Sources */,

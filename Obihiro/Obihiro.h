@@ -12,3 +12,4 @@
 #import <Obihiro/OBHNavigationControllerObject.h>
 #import <Obihiro/OBHAlertControllerObject.h>
 #import <Obihiro/NSBundle+OBH.h>
+#import <Obihiro/OBHTableViewControllerObject.h>
