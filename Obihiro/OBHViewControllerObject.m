@@ -267,9 +267,21 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return [self.class eventually:test timeout:self.defaultTimeout];
 }
 
-- (BOOL)eventuallyNotNil:(id (^)())test {
+- (BOOL)eventuallyNot:(BOOL (^)())test {
     return [self eventually:^BOOL{
-        return test() != nil;
+        return !test();
+    }];
+}
+
+- (BOOL)eventuallyNil:(id (^)())test {
+    return [self eventually:^BOOL {
+        return test() == nil;
+    }];
+}
+
+- (BOOL)eventuallyNotNil:(id (^)())test {
+    return [self eventuallyNot:^BOOL{
+        return test() == nil;
     }];
 }
 

@@ -160,6 +160,9 @@
 - (BOOL)waitFor:(BOOL(^)())test;
 
 - (BOOL)eventually:(BOOL(^)())test;
+- (BOOL)eventuallyNot:(BOOL(^)())test;
+
+- (BOOL)eventuallyNil:(id(^)())test;
 - (BOOL)eventuallyNotNil:(id(^)())test;
 
 - (BOOL)globally:(BOOL(^)())test;
