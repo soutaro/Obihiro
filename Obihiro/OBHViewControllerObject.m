@@ -148,7 +148,17 @@ static NSTimeInterval runLoopTimeout = 0.1;
 - (BOOL)hasAlert {
     [self ensureAllViewsDidAppear];
     
-    return [self.viewController.presentedViewController isKindOfClass:[UIAlertController class]];
+    return [self eventually:^{
+        return [self.viewController.presentedViewController isKindOfClass:[UIAlertController class]];
+    }];
+}
+
+- (BOOL)hasNoAlert {
+    [self ensureAllViewsDidAppear];
+    
+    return [self eventuallyNot:^{
+        return [self.viewController.presentedViewController isKindOfClass:[UIAlertController class]];
+    }];
 }
 
 #pragma mark - View

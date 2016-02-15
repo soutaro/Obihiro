@@ -90,6 +90,11 @@
  */
 @property (nonatomic, readonly) BOOL hasAlert;
 
+/**
+ Returns false when no alert is presented.
+ */
+@property (nonatomic, readonly) BOOL hasNoAlert;
+
 #pragma mark - Views
 
 /**
