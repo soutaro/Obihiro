@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB254CE61C7232BB00DD54ED /* OBHUIPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB254CE51C7232BB00DD54ED /* OBHUIPredicate.m */; };
 		AB6D6CB51C5B137C00FA79D1 /* NSBundle+OBH.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */; };
 		AB91382D1C6BB62D00F3D820 /* OBHTableViewControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AB91382C1C6BB62D00F3D820 /* OBHTableViewControllerObject.m */; };
 		ABB888F01C542EB10075E438 /* ObihiroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB888EF1C542EB10075E438 /* ObihiroTests.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB254CE41C7232BB00DD54ED /* OBHUIPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBHUIPredicate.h; sourceTree = "<group>"; };
+		AB254CE51C7232BB00DD54ED /* OBHUIPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBHUIPredicate.m; sourceTree = "<group>"; };
 		AB6D6CB31C5B137C00FA79D1 /* NSBundle+OBH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+OBH.h"; sourceTree = "<group>"; };
 		AB6D6CB41C5B137C00FA79D1 /* NSBundle+OBH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+OBH.m"; sourceTree = "<group>"; };
 		AB91382B1C6BB62D00F3D820 /* OBHTableViewControllerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBHTableViewControllerObject.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				ABB889151C5430DB0075E438 /* OBHNavigationControllerObject.m */,
 				AB91382B1C6BB62D00F3D820 /* OBHTableViewControllerObject.h */,
 				AB91382C1C6BB62D00F3D820 /* OBHTableViewControllerObject.m */,
+				AB254CE41C7232BB00DD54ED /* OBHUIPredicate.h */,
+				AB254CE51C7232BB00DD54ED /* OBHUIPredicate.m */,
 				ABB889161C5430DB0075E438 /* OBHViewControllerObject.h */,
 				ABB889171C5430DB0075E438 /* OBHViewControllerObject.m */,
 				ABB889181C5430DB0075E438 /* OBHViewControllerObject+Private.h */,
@@ -265,6 +270,7 @@
 				ABB889031C542F660075E438 /* AppDelegate.m in Sources */,
 				AB91382D1C6BB62D00F3D820 /* OBHTableViewControllerObject.m in Sources */,
 				ABB889201C5430DB0075E438 /* OBHViewControllerObject.m in Sources */,
+				AB254CE61C7232BB00DD54ED /* OBHUIPredicate.m in Sources */,
 				ABB889221C5430DB0075E438 /* UIViewController+OBH.m in Sources */,
 				ABB8891E1C5430DB0075E438 /* OBHAlertControllerObject.m in Sources */,
 				ABB889051C542F660075E438 /* ViewController.m in Sources */,

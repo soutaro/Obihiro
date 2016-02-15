@@ -4,6 +4,7 @@
 #import "OBHNavigationControllerObject.h"
 #import "OBHAlertControllerObject.h"
 #import "OBHTableViewControllerObject.h"
+#import "OBHUIPredicate.h"
 
 static NSTimeInterval runLoopTimeout = 0.1;
 
@@ -145,20 +146,20 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return [self presentedObjectOfViewControllerClass:[UIAlertController class]];
 }
 
-- (BOOL)hasAlert {
+- (OBHUIPredicate *)alertPresented {
     [self ensureAllViewsDidAppear];
     
-    return [self eventually:^{
+    return [self predicateWithTest:^{
         return [self.viewController.presentedViewController isKindOfClass:[UIAlertController class]];
     }];
 }
 
+- (BOOL)hasAlert {
+    return self.alertPresented.holds;
+}
+
 - (BOOL)hasNoAlert {
-    [self ensureAllViewsDidAppear];
-    
-    return [self eventuallyNot:^{
-        return [self.viewController.presentedViewController isKindOfClass:[UIAlertController class]];
-    }];
+    return self.alertPresented.negation.holds;
 }
 
 #pragma mark - View
@@ -249,6 +250,12 @@ static NSTimeInterval runLoopTimeout = 0.1;
 
 - (BOOL)isPresented {
     return self.viewController.presentingViewController != nil;
+}
+
+#pragma mark - Predicates
+
+- (OBHUIPredicate *)predicateWithTest:(BOOL (^)())test {
+    return [[OBHUIPredicate alloc] initWithObject:self test:test];
 }
 
 #pragma mark - Utilities

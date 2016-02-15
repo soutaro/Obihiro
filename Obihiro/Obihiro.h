@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import <Obihiro/OBHUIPredicate.h>
 #import <Obihiro/OBHViewControllerObject.h>
 #import <Obihiro/OBHNavigationControllerObject.h>
 #import <Obihiro/OBHAlertControllerObject.h>

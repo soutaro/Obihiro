@@ -1,5 +1,6 @@
 #import "OBHNavigationControllerObject.h"
 #import "OBHViewControllerObject+Private.h"
+#import "OBHUIPredicate.h"
 
 @implementation OBHNavigationControllerObject
 
@@ -41,68 +42,78 @@
 
 #pragma mark -
 
-- (BOOL)hasBackButton {
-    return [self eventuallyNot:^{
-        return self.topObject.viewController.navigationItem.hidesBackButton;
+- (OBHUIPredicate *)backButtonPresented {
+    return [self predicateWithTest:^BOOL{
+        return !self.topObject.viewController.navigationItem.hidesBackButton;
     }];
+}
+
+- (OBHUIPredicate *)leftButtonPresented {
+    return [self predicateWithTest:^BOOL{
+        return self.topObject.viewController.navigationItem.leftBarButtonItem != nil;
+    }];
+}
+
+- (OBHUIPredicate *)rightButtonPresented {
+    return [self predicateWithTest:^BOOL{
+        return self.topObject.viewController.navigationItem.rightBarButtonItem != nil;
+    }];
+}
+
+- (OBHUIPredicate *)leftButtonAvailable {
+    return [self predicateWithTest:^{
+        return self.topObject.viewController.navigationItem.leftBarButtonItem.enabled;
+    }];
+}
+
+- (OBHUIPredicate *)rightButtonAvailable {
+    return [self predicateWithTest:^{
+        return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
+    }];
+}
+
+- (BOOL)hasBackButton {
+    return self.backButtonPresented.holds;
 }
 
 - (BOOL)isBackButtonHidden {
-    return [self eventually:^{
-        return self.topObject.viewController.navigationItem.hidesBackButton;
-    }];
+    return self.backButtonPresented.negation.holds;
 }
 
 - (BOOL)hasLeftButton {
-    return [self eventuallyNotNil:^{
-        return self.topObject.viewController.navigationItem.leftBarButtonItem;
-    }];
+    return self.leftButtonPresented.holds;
 }
 
 - (BOOL)isLeftButtonHidden {
-    return [self eventuallyNil:^{
-        return self.topObject.viewController.navigationItem.leftBarButtonItem;
-    }];
+    return self.leftButtonPresented.negation.holds;
 }
 
 - (BOOL)hasRightButton {
-    return [self eventuallyNotNil:^{
-        return self.topObject.viewController.navigationItem.rightBarButtonItem;
-    }];
+    return self.rightButtonPresented.holds;
 }
 
 - (BOOL)isRightButtonHidden {
-    return [self eventuallyNil:^{
-        return self.topObject.viewController.navigationItem.rightBarButtonItem;
-    }];
+    return self.rightButtonPresented.negation.holds;
 }
 
 - (BOOL)isLeftButtonAvailable {
-    return [self eventually:^{
-        return self.topObject.viewController.navigationItem.leftBarButtonItem.enabled;
-    }];
+    return self.leftButtonAvailable.holds;
 }
 
 - (BOOL)isLeftButtonUnavailable {
-    return [self eventuallyNot:^{
-        return self.topObject.viewController.navigationItem.leftBarButtonItem.enabled;
-    }];
+    return self.leftButtonAvailable.negation.holds;
 }
 
 - (BOOL)isRightButtonAvailable {
-    return [self eventually:^{
-        return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
-    }];
+    return self.rightButtonAvailable.holds;
 }
 
 - (BOOL)isRightButtonUnavailable {
-    return [self eventuallyNot:^{
-        return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
-    }];
+    return self.rightButtonAvailable.negation.holds;
 }
 
 - (void)tapRightButton {
-    if (self.isRightButtonUnavailable) {
+    if (self.rightButtonAvailable.negation.holds) {
         return;
     }
     

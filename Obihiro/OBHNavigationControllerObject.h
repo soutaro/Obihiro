@@ -17,20 +17,27 @@
 
 #pragma mark -
 
-@property (nonatomic, readonly) BOOL hasBackButton;
-@property (nonatomic, readonly) BOOL isBackButtonHidden;
+@property (nonatomic, readonly) OBHUIPredicate *backButtonPresented;
+@property (nonatomic, readonly) OBHUIPredicate *leftButtonPresented;
+@property (nonatomic, readonly) OBHUIPredicate *rightButtonPresented;
 
-@property (nonatomic, readonly) BOOL hasLeftButton;
-@property (nonatomic, readonly) BOOL isLeftButtonHidden;
+@property (nonatomic, readonly) OBHUIPredicate *leftButtonAvailable;
+@property (nonatomic, readonly) OBHUIPredicate *rightButtonAvailable;
 
-@property (nonatomic, readonly) BOOL hasRightButton;
-@property (nonatomic, readonly) BOOL isRightButtonHidden;
+@property (nonatomic, readonly) BOOL hasBackButton __deprecated;
+@property (nonatomic, readonly) BOOL isBackButtonHidden __deprecated;
 
-@property (nonatomic, readonly) BOOL isLeftButtonAvailable;
-@property (nonatomic, readonly) BOOL isLeftButtonUnavailable;
+@property (nonatomic, readonly) BOOL hasLeftButton __deprecated;
+@property (nonatomic, readonly) BOOL isLeftButtonHidden __deprecated;
 
-@property (nonatomic, readonly) BOOL isRightButtonAvailable;
-@property (nonatomic, readonly) BOOL isRightButtonUnavailable;
+@property (nonatomic, readonly) BOOL hasRightButton __deprecated;
+@property (nonatomic, readonly) BOOL isRightButtonHidden __deprecated;
+
+@property (nonatomic, readonly) BOOL isLeftButtonAvailable __deprecated;
+@property (nonatomic, readonly) BOOL isLeftButtonUnavailable __deprecated;
+
+@property (nonatomic, readonly) BOOL isRightButtonAvailable __deprecated;
+@property (nonatomic, readonly) BOOL isRightButtonUnavailable __deprecated;
 
 - (void)tapRightButton;
 

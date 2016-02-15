@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+@class OBHUIPredicate;
 @class OBHNavigationControllerObject;
 @class OBHAlertControllerObject;
 
@@ -85,15 +86,13 @@
  */
 - (OBHAlertControllerObject *)alertObject;
 
-/**
- Returns true when alert is presented.
- */
-@property (nonatomic, readonly) BOOL hasAlert;
+@property (nonatomic, readonly) BOOL hasAlert __deprecated;
+@property (nonatomic, readonly) BOOL hasNoAlert __deprecated;
 
 /**
- Returns false when no alert is presented.
+ Returns predicate to test the View Controller presents alert or not.
  */
-@property (nonatomic, readonly) BOOL hasNoAlert;
+@property (nonatomic, readonly) OBHUIPredicate *alertPresented;
 
 #pragma mark - Views
 
@@ -138,6 +137,10 @@
  Returns `YES` if the ViewController is already presented.
  */
 @property (nonatomic, readonly) BOOL isPresented;
+
+#pragma mark - Predicates
+
+- (OBHUIPredicate *)predicateWithTest:(BOOL(^)())test;
 
 #pragma mark - Utilities
 
