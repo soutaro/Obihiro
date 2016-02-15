@@ -18,11 +18,19 @@
 #pragma mark -
 
 @property (nonatomic, readonly) BOOL hasBackButton;
+@property (nonatomic, readonly) BOOL isBackButtonHidden;
+
 @property (nonatomic, readonly) BOOL hasLeftButton;
+@property (nonatomic, readonly) BOOL isLeftButtonHidden;
+
 @property (nonatomic, readonly) BOOL hasRightButton;
+@property (nonatomic, readonly) BOOL isRightButtonHidden;
 
 @property (nonatomic, readonly) BOOL isLeftButtonAvailable;
+@property (nonatomic, readonly) BOOL isLeftButtonUnavailable;
+
 @property (nonatomic, readonly) BOOL isRightButtonAvailable;
+@property (nonatomic, readonly) BOOL isRightButtonUnavailable;
 
 - (void)tapRightButton;
 

@@ -11,7 +11,9 @@
 
 - (BOOL)hasTopViewControllerOfClass:(Class)klass {
     [self ensureAllViewsDidAppear];
-    return [self.viewController.topViewController isKindOfClass:klass];
+    return [self eventually:^{
+        return [self.viewController.topViewController isKindOfClass:klass];
+    }];
 }
 
 - (void)pushViewControllerObject:(OBHViewControllerObject *)object {
@@ -40,27 +42,67 @@
 #pragma mark -
 
 - (BOOL)hasBackButton {
-    return !self.topObject.viewController.navigationItem.hidesBackButton;
+    return [self eventuallyNot:^{
+        return self.topObject.viewController.navigationItem.hidesBackButton;
+    }];
+}
+
+- (BOOL)isBackButtonHidden {
+    return [self eventually:^{
+        return self.topObject.viewController.navigationItem.hidesBackButton;
+    }];
 }
 
 - (BOOL)hasLeftButton {
-    return self.topObject.viewController.navigationItem.leftBarButtonItem != nil;
+    return [self eventuallyNotNil:^{
+        return self.topObject.viewController.navigationItem.leftBarButtonItem;
+    }];
+}
+
+- (BOOL)isLeftButtonHidden {
+    return [self eventuallyNil:^{
+        return self.topObject.viewController.navigationItem.leftBarButtonItem;
+    }];
 }
 
 - (BOOL)hasRightButton {
-    return self.topObject.viewController.navigationItem.rightBarButtonItem != nil;
+    return [self eventuallyNotNil:^{
+        return self.topObject.viewController.navigationItem.rightBarButtonItem;
+    }];
+}
+
+- (BOOL)isRightButtonHidden {
+    return [self eventuallyNil:^{
+        return self.topObject.viewController.navigationItem.rightBarButtonItem;
+    }];
 }
 
 - (BOOL)isLeftButtonAvailable {
-    return self.topObject.viewController.navigationItem.leftBarButtonItem.enabled;
+    return [self eventually:^{
+        return self.topObject.viewController.navigationItem.leftBarButtonItem.enabled;
+    }];
+}
+
+- (BOOL)isLeftButtonUnavailable {
+    return [self eventuallyNot:^{
+        return self.topObject.viewController.navigationItem.leftBarButtonItem.enabled;
+    }];
 }
 
 - (BOOL)isRightButtonAvailable {
-    return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
+    return [self eventually:^{
+        return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
+    }];
+}
+
+- (BOOL)isRightButtonUnavailable {
+    return [self eventuallyNot:^{
+        return self.topObject.viewController.navigationItem.rightBarButtonItem.enabled;
+    }];
 }
 
 - (void)tapRightButton {
-    if (!self.isRightButtonAvailable) {
+    if (self.isRightButtonUnavailable) {
         return;
     }
     
