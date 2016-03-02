@@ -194,6 +194,112 @@ XCTAssertEqualObjects(@["OK"], alertObject.titles);
 [alertObject tapAlertButtonForTitles:@"OK"];
 ```
 
+## Testing User Interface
+
+Making your tests stable is difficult.
+One way to keep your test stable is to make your test repeat.
+
+Instead of testing your UI status only once:
+
+```objc
+XCTAssertTrue(self.object.hasPopover);
+```
+
+Try to write a code to repeat until success.
+
+```objc
+XCTAssertTrue([self.object eventually:^BOOL{
+  return self.object.hasPopover;
+}]);
+```
+
+It is good idea to make every predicate retry and you would define your predicate method something like this:
+
+```objc
+- (BOOL)hasPopover {
+  return [self eventuallyNotNil:^{
+    return self.presentedPopoverObject;
+  }];
+}
+```
+
+This helps keeping your test clean.
+
+```objc
+// Now the test retries until success
+XCTAssertTrue(self.object.hasPopover);
+```
+
+However, the negation does not work as you expected.
+
+```objc
+// Write test script to close popover
+
+// This may not work
+XCTAssertFalse(self.object.hasPopover);
+```
+
+The test you want is actually something like this:
+
+```objc
+XCTAssertTrue([self.object eventuallyNil:^{
+  return self.object.presentedPopoverObject;
+}]);
+```
+
+The positive form of a test in your mind, *Popover is presented*, means
+
+* (P) There will be an moment that popover is presented within a short period
+
+The negation of a test in your mine, *Popover is not presented*, means
+
+* (Q) There will be an moment that popover is not presented within a short period
+
+`Q` is not a negation of `P`. You have to define another predicate:
+
+```objc
+- (BOOL)doesntHavePopover {
+  return [self eventuallyNil:^{
+    return self.presentedPopoverObject;
+  }];
+}
+```
+
+and the following test will work.
+
+```objc
+// Write test script to close popover
+
+// This may not work
+XCTAssertTrue(self.object.doesntHavePopover);
+```
+
+Defining positive and negative forms for all predicates must be boring.
+
+Obihiro 1.2 introduces `OBHUIPredicate`.
+
+```objc
+- (OBHUIPredicate *)popoverPresented {
+  return [self predicateWithTest:^{
+    return self.object.presentedPopoverObject != nil;
+  }];
+}
+```
+
+This is like *matcher* idea in modern test frameworks including Rspec.
+You can use that in your test.
+
+```objc
+// Positive form
+XCTAssert(self.object.popoverPresented.holds);
+
+// Negative form
+XCTAssert(self.object.popoverPresented.doesntHold);
+XCTAssert(self.object.popoverPresented.negation.hold);  // Another syntax
+```
+
+Use `OBHUIPredicate` to define tests of UI, and keep your test code clean.
+
 ## Simulating Use Actions
 
 There are two (or more) ways to simulate user actions:
