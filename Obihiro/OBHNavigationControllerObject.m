@@ -18,8 +18,10 @@
 }
 
 - (void)pushViewControllerObject:(OBHViewControllerObject *)object {
+    [self ensureAllViewsDidAppear];
     [self cacheObject:object];
     [self.viewController pushViewController:object.viewController animated:NO];
+    [self ensureAllViewsDidAppear];
 }
 
 - (void)pushViewController:(UIViewController *)viewController {
@@ -133,6 +135,7 @@
     [self simulateUserAction:^{
         [self.viewController popViewControllerAnimated:YES];
     }];
+    [self ensureAllViewsDidAppear];
 }
 
 @end
