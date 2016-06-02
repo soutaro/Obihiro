@@ -4,6 +4,8 @@
 @class OBHNavigationControllerObject;
 @class OBHAlertControllerObject;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface OBHViewControllerObject<ViewController: UIViewController *> : NSObject
 
 @property (nonatomic, readonly) ViewController viewController;
@@ -59,7 +61,7 @@
 /**
  Returns first object from `childObjectsOfViewControllerClass:`.
  */
-- (__kindof OBHViewControllerObject *)firstChildObjectOfViewControllerClass:(Class)klass;
+- (nullable __kindof OBHViewControllerObject *)firstChildObjectOfViewControllerClass:(Class)klass;
 
 /**
  Returns ViewController Object associated with given `viewController`.
@@ -74,17 +76,17 @@
 /**
  Returns object for View Controller of given class presented by the View Controller associated to this object.
  */
-- (__kindof OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass;
+- (nullable __kindof OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass;
 
 /**
  Returns object for View Controller presented by as Popover by the View Controller associated to this object.
  */
-- (__kindof OBHViewControllerObject *)presentedPopoverObject;
+- (nullable __kindof OBHViewControllerObject *)presentedPopoverObject;
 
 /**
  Returns object for UIAlertController presented by as Popover by the View Controller associated to this object.
  */
-- (OBHAlertControllerObject *)alertObject;
+- (nullable OBHAlertControllerObject *)alertObject;
 
 @property (nonatomic, readonly) BOOL hasAlert __deprecated;
 @property (nonatomic, readonly) BOOL hasNoAlert __deprecated;
@@ -109,7 +111,7 @@
 /**
  Returns an instance of subclass of `klass`.
  */
-- (__kindof UIView *)firstDescendantViewOfClass:(__unsafe_unretained Class)klass;
+- (nullable __kindof UIView *)firstDescendantViewOfClass:(__unsafe_unretained Class)klass;
 
 #pragma mark - User Action
 
@@ -205,3 +207,5 @@
 + (void)runLoopForSeconds:(NSTimeInterval)seconds;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -1,5 +1,7 @@
 #import "OBHViewControllerObject.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface OBHNavigationControllerObject : OBHViewControllerObject<UINavigationController *>
 
 - (BOOL)hasTopViewControllerOfClass:(Class)klass;
@@ -11,9 +13,9 @@
 - (void)pushViewControllerObject:(OBHViewControllerObject *)object;
 - (void)pushViewController:(UIViewController *)viewController;
 
-- (__kindof OBHViewControllerObject *)topObject;
+- (nullable __kindof OBHViewControllerObject *)topObject;
 
-- (__kindof OBHViewControllerObject *)topObjectOfViewControllerClass:(Class)klass;
+- (nullable __kindof OBHViewControllerObject *)topObjectOfViewControllerClass:(Class)klass;
 
 #pragma mark -
 
@@ -46,3 +48,5 @@
 - (void)back;
 
 @end
+
+NS_ASSUME_NONNULL_END

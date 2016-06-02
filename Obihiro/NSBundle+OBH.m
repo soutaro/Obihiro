@@ -1,13 +1,15 @@
 #import "NSBundle+OBH.h"
 #import <objc/runtime.h>
 
-static NSBundle *OBHLocalizedBundle = nil;
+NS_ASSUME_NONNULL_BEGIN
+
+static NSBundle * _Nullable OBHLocalizedBundle = nil;
 
 @implementation NSBundle (OBH)
 
 + (void)setMessageLocalizationLocale:(NSString *)localeString {
-    if (localeString) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:localeString ofType:@"lproj"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:localeString ofType:@"lproj"];
+    if (path) {
         OBHLocalizedBundle = [NSBundle bundleWithPath:path];
     } else {
         OBHLocalizedBundle = nil;
@@ -35,3 +37,5 @@ static NSBundle *OBHLocalizedBundle = nil;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

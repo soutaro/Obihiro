@@ -2,6 +2,8 @@
 #import "OBHViewControllerObject+Private.h"
 #import "OBHUIPredicate.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation OBHNavigationControllerObject
 
 + (instancetype)objectWithEmptyNavigationController {
@@ -29,12 +31,18 @@
     [self pushViewControllerObject:object];
 }
 
-- (OBHViewControllerObject *)topObject {
+- (nullable OBHViewControllerObject *)topObject {
     [self ensureAllViewsDidAppear];
-    return [self childObjectWithViewController:self.viewController.topViewController];
+    
+    UIViewController *topViewController = self.viewController.topViewController;
+    if (topViewController) {
+        return [self childObjectWithViewController:topViewController];
+    }
+    
+    return nil;
 }
 
-- (OBHViewControllerObject *)topObjectOfViewControllerClass:(Class)klass {
+- (nullable OBHViewControllerObject *)topObjectOfViewControllerClass:(Class)klass {
     if ([self hasTopViewControllerOfClass:klass]) {
         return self.topObject;
     } else {
@@ -139,3 +147,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

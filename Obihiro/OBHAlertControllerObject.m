@@ -1,12 +1,14 @@
 #import "OBHAlertControllerObject.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation OBHAlertControllerObject
 
-- (NSString *)alertTitle {
+- (nullable NSString *)alertTitle {
     return self.viewController.title;
 }
 
-- (NSString *)alertMessage {
+- (nullable NSString *)alertMessage {
     return self.viewController.message;
 }
 
@@ -16,7 +18,10 @@
     NSMutableArray *titles = [NSMutableArray new];
     
     for (UIAlertAction *action in actions) {
-        [titles addObject:action.title];
+        NSString *title = action.title;
+        if (title) {
+            [titles addObject:title];
+        }
     }
     
     return titles;
@@ -43,3 +48,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

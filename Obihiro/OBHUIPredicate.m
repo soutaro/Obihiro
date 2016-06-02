@@ -1,6 +1,8 @@
 #import "OBHUIPredicate.h"
 #import "OBHViewControllerObject.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface OBHUIPredicate ()
 
 @property (nonatomic, weak) OBHViewControllerObject *object;
@@ -28,9 +30,11 @@
 }
 
 - (OBHUIPredicate *)negation {
-    return [[self.class alloc] initWithObject:self.object test:^BOOL{
+    return [[self.class alloc] initWithObject:(__kindof OBHViewControllerObject * _Nonnull)self.object test:^BOOL{
         return !self.test();
     }];
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

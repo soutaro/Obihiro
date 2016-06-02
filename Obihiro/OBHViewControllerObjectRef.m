@@ -1,5 +1,7 @@
 #import "OBHViewControllerObjectRef.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation OBHViewControllerObjectRef {
     __weak OBHViewControllerObject *_object;
 }
@@ -17,11 +19,13 @@
 }
 
 - (OBHViewControllerObject *)object {
-    return _object;
+    return (OBHViewControllerObject * _Nonnull)_object;
 }
 
 - (UIViewController *)viewController {
-    return _object.viewController;
+    return self.object.viewController;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

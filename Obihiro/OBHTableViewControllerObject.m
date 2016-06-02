@@ -1,5 +1,7 @@
 #import "OBHTableViewControllerObject.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface OBHTableViewControllerObject ()
 
 @property (nonatomic, readonly) UITableViewController *viewController;
@@ -16,21 +18,25 @@
     return [self.viewController.tableView visibleCells];
 }
 
-- (UITableViewCell *)visibleCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (nullable __kindof UITableViewCell *)visibleCellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.viewController.tableView layoutIfNeeded];
     
     UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-    if ([self.visibleCells containsObject:cell]) {
-        return cell;
-    } else {
-        return nil;
+    if (cell) {
+        if ([self.visibleCells containsObject:cell]) {
+            return cell;
+        }
     }
+    
+    return nil;
 }
 
-- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (nullable __kindof UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.viewController.tableView layoutIfNeeded];
     
     return [self.viewController.tableView cellForRowAtIndexPath:indexPath];
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

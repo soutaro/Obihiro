@@ -5,6 +5,9 @@
 #import "OBHAlertControllerObject.h"
 #import "OBHTableViewControllerObject.h"
 #import "OBHUIPredicate.h"
+#import "OBHViewControllerObject+Private.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 static NSTimeInterval runLoopTimeout = 0.1;
 
@@ -32,14 +35,14 @@ static NSTimeInterval runLoopTimeout = 0.1;
 
 + (instancetype)objectWithInitialViewControllerFromStoryBoardWithName:(NSString *)name {
     UIStoryboard *storyboard =[UIStoryboard storyboardWithName:name bundle:nil];
-    UIViewController *viewController = [storyboard instantiateInitialViewController];
+    UIViewController *viewController = (__kindof UIViewController * _Nonnull)[storyboard instantiateInitialViewController];
     
     return [self objectWithViewController:viewController];
 }
 
 #pragma mark - Initialize
 
-- (instancetype)initWithViewController:(UIViewController *)viewController parentObject:(OBHViewControllerObject *)parentObject {
+- (instancetype)initWithViewController:(UIViewController *)viewController parentObject:(nullable OBHViewControllerObject *)parentObject {
     self = [self init];
     
     _parentObject = parentObject;
@@ -108,7 +111,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return childObjects;
 }
 
-- (OBHViewControllerObject *)firstChildObjectOfViewControllerClass:(Class)klass {
+- (nullable OBHViewControllerObject *)firstChildObjectOfViewControllerClass:(Class)klass {
     return [self childObjectsOfViewControllerClass:klass].firstObject;
 }
 
@@ -118,31 +121,35 @@ static NSTimeInterval runLoopTimeout = 0.1;
 
 #pragma mark -
 
-- (OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass {
+- (nullable OBHViewControllerObject *)presentedObjectOfViewControllerClass:(Class)klass {
     [self ensureAllViewsDidAppear];
     
     UIViewController *presentedViewController = self.viewController.presentedViewController;
     
-    if (presentedViewController && [presentedViewController isKindOfClass:klass]) {
-        return [self childObjectWithViewController:presentedViewController];
-    } else {
-        return nil;
+    if (presentedViewController) {
+        if ([presentedViewController isKindOfClass:klass]) {
+            return [self childObjectWithViewController:presentedViewController];
+        }
     }
+    
+    return nil;
 }
 
-- (OBHViewControllerObject *)presentedPopoverObject {
+- (nullable OBHViewControllerObject *)presentedPopoverObject {
     [self ensureAllViewsDidAppear];
     
     UIViewController *presentedViewController = self.viewController.presentedViewController;
     
-    if (presentedViewController && presentedViewController.modalPresentationStyle == UIModalPresentationPopover) {
-        return [self objectWithViewController:presentedViewController];
-    } else {
-        return nil;
+    if (presentedViewController) {
+        if (presentedViewController.modalPresentationStyle == UIModalPresentationPopover) {
+            return [self objectWithViewController:presentedViewController];
+        }
     }
+    
+    return nil;
 }
 
-- (OBHAlertControllerObject *)alertObject {
+- (nullable OBHAlertControllerObject *)alertObject {
     return [self presentedObjectOfViewControllerClass:[UIAlertController class]];
 }
 
@@ -174,7 +181,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return array;
 }
 
-- (UIView *)firstDescendantViewOfClass:(__unsafe_unretained Class)klass {
+- (nullable UIView *)firstDescendantViewOfClass:(__unsafe_unretained Class)klass {
     return [self descendantViewsOfClass:klass].firstObject;
 }
 
@@ -368,7 +375,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 
 #pragma mark - Cache and factory
 
-- (__kindof OBHViewControllerObject *)cachedObjectForViewController:(UIViewController *)viewController {
+- (nullable __kindof OBHViewControllerObject *)cachedObjectForViewController:(UIViewController *)viewController {
     if (self.parentObject) {
         return [self.parentObject cachedObjectForViewController:viewController];
     }
@@ -424,11 +431,14 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }
     
     Class objectClass = [self objectClassForViewControllerClass:viewController.class];
-    object = [[objectClass alloc] initWithViewController:viewController parentObject:self];
     
-    [self cacheObject:object];
+    OBHViewControllerObject *newObject = [[objectClass alloc] initWithViewController:viewController parentObject:self];
     
-    return object;
+    [self cacheObject:newObject];
+    
+    return newObject;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
