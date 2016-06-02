@@ -17,7 +17,6 @@
 		ABB889071C542F760075E438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABB889061C542F760075E438 /* Assets.xcassets */; };
 		ABB8890E1C542F910075E438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB8890A1C542F910075E438 /* LaunchScreen.storyboard */; };
 		ABB8890F1C542F910075E438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB8890C1C542F910075E438 /* Main.storyboard */; };
-		ABB889111C5430310075E438 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB889101C5430310075E438 /* Info.plist */; };
 		ABB8891E1C5430DB0075E438 /* OBHAlertControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB889131C5430DB0075E438 /* OBHAlertControllerObject.m */; };
 		ABB8891F1C5430DB0075E438 /* OBHNavigationControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB889151C5430DB0075E438 /* OBHNavigationControllerObject.m */; };
 		ABB889201C5430DB0075E438 /* OBHViewControllerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB889171C5430DB0075E438 /* OBHViewControllerObject.m */; };
@@ -209,7 +208,7 @@
 		ABB888CA1C542EB10075E438 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Soutaro Matsumoto";
 				TargetAttributes = {
 					ABB888D11C542EB10075E438 = {
@@ -245,7 +244,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABB889111C5430310075E438 /* Info.plist in Resources */,
 				ABB8890F1C542F910075E438 /* Main.storyboard in Resources */,
 				ABB889071C542F760075E438 /* Assets.xcassets in Resources */,
 				ABB8890E1C542F910075E438 /* LaunchScreen.storyboard in Resources */,
