@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "Obihiro"
-  spec.version = "1.2.1"
+  spec.version = "1.3.0"
   spec.license = { type: 'MIT' }
   spec.homepage = "https://github.com/soutaro/Obihiro"
   spec.authors = { "Soutaro Matsumoto" => "matsumoto@soutaro.com" }
