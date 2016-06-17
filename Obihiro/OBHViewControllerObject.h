@@ -126,6 +126,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Present the ViewController under UIWindow.rootViewController.
  Returns after `viewDidAppear` call.
+ 
+ If viewController's modalPresentationStyle is UIModalPresentationPopover, the method will configure popoverPresentationController of viewController.
+ The popover presentation location will be left-top of the window.
  */
 - (void)presentViewController;
 

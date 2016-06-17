@@ -222,6 +222,10 @@ static NSTimeInterval runLoopTimeout = 0.1;
     
     UIViewController *root = window.rootViewController;
     
+    if (self.viewController.modalPresentationStyle == UIModalPresentationPopover) {
+        self.viewController.popoverPresentationController.sourceView = root.view;
+    }
+    
     __block BOOL done = NO;
     [root presentViewController:self.viewController animated:NO completion:^{
         done = YES;
