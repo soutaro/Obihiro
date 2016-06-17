@@ -268,11 +268,18 @@ static NSTimeInterval runLoopTimeout = 0.1;
 #pragma mark - Utilities
 
 - (void)ensureAllViewsDidAppear {
-    [self ensureAllViewsDidAppear:self.defaultTimeout orRaiseError:NO];
+    [self.class ensureAllViewsDidAppear:self.defaultTimeout orRaiseError:NO];
 }
 
 - (void)ensureAllViewsDidAppear:(NSTimeInterval)timeout orRaiseError:(BOOL)raiseError {
-    if ([self.class allViewControllersDidAppear]) {
+    [self.class ensureAllViewsDidAppear:timeout orRaiseError:raiseError];
+}
+
++ (void)ensureAllViewsDidAppear:(NSTimeInterval)timeout orRaiseError:(BOOL)raiseError
+{
+    [self runLoopForSeconds:0.1];
+    
+    if ([self allViewControllersDidAppear]) {
         return;
     }
     

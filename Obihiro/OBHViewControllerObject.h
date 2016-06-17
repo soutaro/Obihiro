@@ -155,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
  Blocks until `+ allViewControllersDidAppear` returns true.
  If timed out, raises an error if `raiseError` is true.
  */
-- (void)ensureAllViewsDidAppear:(NSTimeInterval)timeout orRaiseError:(BOOL)raiseError;
+- (void)ensureAllViewsDidAppear:(NSTimeInterval)timeout orRaiseError:(BOOL)raiseError __deprecated_msg("Use +[OBHViewControllerObject ensureAllViewsDidAppear:orRaiseError] instead");
 
 /**
  Default timeout for `-[OBHViewControllerObject waitFor:timeout:]`.
@@ -205,6 +205,12 @@ NS_ASSUME_NONNULL_BEGIN
  Blocks for `seconds`.
  */
 + (void)runLoopForSeconds:(NSTimeInterval)seconds;
+
+/**
+ Blocks until `+ allViewControllersDidAppear` returns true.
+ If timed out, raises an error if `raiseError` is true.
+ */
++ (void)ensureAllViewsDidAppear:(NSTimeInterval)timeout orRaiseError:(BOOL)raiseError;
 
 @end
 
