@@ -50,9 +50,9 @@ static NSTimeInterval runLoopTimeout = 0.1;
     
     self.defaultTimeout = 0.4;
     if (!self.parentObject) {
-        self.objectRefs = [NSMutableArray new];
+        self.objectRefs = [[NSMutableArray alloc] init];
     }
-    self.classRegistory = [NSMutableDictionary new];
+    self.classRegistory = [[NSMutableDictionary alloc] init];
     
     [self initializeObject];
     
@@ -99,7 +99,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 - (NSArray<OBHViewControllerObject *> *)childObjectsOfViewControllerClass:(Class)klass {
     [self ensureAllViewsDidAppear];
     
-    NSMutableArray<__kindof OBHViewControllerObject *> *childObjects = [NSMutableArray new];
+    NSMutableArray<__kindof OBHViewControllerObject *> *childObjects = [[NSMutableArray alloc] init];
     
     for (UIViewController *viewController in self.viewController.childViewControllers) {
         if ([viewController isKindOfClass:klass]) {
@@ -176,7 +176,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 }
 
 - (NSArray<UIView *> *)descendantViewsOfClass:(Class)klass {
-    NSMutableArray<UIView *> *array = [NSMutableArray new];
+    NSMutableArray<UIView *> *array = [[NSMutableArray alloc] init];
     [self addViews:self.view class:klass toArray:array];
     return array;
 }

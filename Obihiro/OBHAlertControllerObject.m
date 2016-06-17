@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray<NSString *> *)buttonTitles {
     NSArray<UIAlertAction *> *actions = self.viewController.actions;
     
-    NSMutableArray *titles = [NSMutableArray new];
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
     
     for (UIAlertAction *action in actions) {
         NSString *title = action.title;
