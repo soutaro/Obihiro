@@ -9,7 +9,7 @@ static NSBundle * _Nullable OBHLocalizedBundle = nil;
 
 + (void)setMessageLocalizationLocale:(NSString *)localeString {
     NSString *path = [[NSBundle mainBundle] pathForResource:localeString ofType:@"lproj"];
-    if (path) {
+    if (localeString && path) {
         OBHLocalizedBundle = [NSBundle bundleWithPath:path];
     } else {
         OBHLocalizedBundle = nil;
