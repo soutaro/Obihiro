@@ -197,7 +197,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 
 #pragma mark - User Action
 
-- (void)simulateUserAction:(void (^)())action {
+- (void)simulateUserAction:(void (^)(void))action {
     action();
     [self.class runLoopForSeconds:0.1];
 }
@@ -265,7 +265,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
 
 #pragma mark - Predicates
 
-- (OBHUIPredicate *)predicateWithTest:(BOOL (^)())test {
+- (OBHUIPredicate *)predicateWithTest:(BOOL (^)(void))test {
     return [[OBHUIPredicate alloc] initWithObject:self test:test];
 }
 
@@ -294,37 +294,37 @@ static NSTimeInterval runLoopTimeout = 0.1;
     }
 }
 
-- (BOOL)waitFor:(BOOL (^)())test {
+- (BOOL)waitFor:(BOOL (^)(void))test {
     return [self.class waitFor:test timeout:self.defaultTimeout];
 }
 
-- (BOOL)eventually:(BOOL (^)())test {
+- (BOOL)eventually:(BOOL (^)(void))test {
     return [self.class eventually:test timeout:self.defaultTimeout];
 }
 
-- (BOOL)eventuallyNot:(BOOL (^)())test {
+- (BOOL)eventuallyNot:(BOOL (^)(void))test {
     return [self eventually:^BOOL{
         return !test();
     }];
 }
 
-- (BOOL)eventuallyNil:(id (^)())test {
+- (BOOL)eventuallyNil:(id (^)(void))test {
     return [self eventually:^BOOL {
         return test() == nil;
     }];
 }
 
-- (BOOL)eventuallyNotNil:(id (^)())test {
+- (BOOL)eventuallyNotNil:(id (^)(void))test {
     return [self eventuallyNot:^BOOL{
         return test() == nil;
     }];
 }
 
-- (BOOL)globally:(BOOL (^)())test {
+- (BOOL)globally:(BOOL (^)(void))test {
     return [self.class globally:test forSeconds:self.defaultTimeout];
 }
 
-- (BOOL)globallyNotNil:(id (^)())test {
+- (BOOL)globallyNotNil:(id (^)(void))test {
     return [self globally:^BOOL{
         return test() != nil;
     }];
@@ -342,7 +342,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:seconds]];
 }
 
-+ (BOOL)waitFor:(BOOL (^)())test timeout:(NSTimeInterval)timeout {
++ (BOOL)waitFor:(BOOL (^)(void))test timeout:(NSTimeInterval)timeout {
     NSDate *end = [NSDate dateWithTimeIntervalSinceNow:timeout];
     
     while ([[NSDate date] compare:end] == NSOrderedAscending) {
@@ -356,7 +356,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return test();
 }
 
-+ (BOOL)eventually:(BOOL (^)())test timeout:(NSTimeInterval)timeout {
++ (BOOL)eventually:(BOOL (^)(void))test timeout:(NSTimeInterval)timeout {
     NSDate *end = [NSDate dateWithTimeIntervalSinceNow:timeout];
     
     while ([[NSDate date] compare:end] == NSOrderedAscending) {
@@ -370,7 +370,7 @@ static NSTimeInterval runLoopTimeout = 0.1;
     return test();
 }
 
-+ (BOOL)globally:(BOOL (^)())test forSeconds:(NSTimeInterval)seconds {
++ (BOOL)globally:(BOOL (^)(void))test forSeconds:(NSTimeInterval)seconds {
     NSDate *end = [NSDate dateWithTimeIntervalSinceNow:seconds];
     
     while ([[NSDate date] compare:end] == NSOrderedAscending) {

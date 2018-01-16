@@ -8,7 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak, readonly) __kindof OBHViewControllerObject *object;
 
-- (instancetype)initWithObject:(OBHViewControllerObject *)object test:(BOOL(^)())test;
+- (instancetype)initWithObject:(OBHViewControllerObject *)object test:(BOOL(^)(void))test;
 
 @property (nonatomic, readonly) BOOL holds;
 @property (nonatomic, readonly) BOOL doesntHold;

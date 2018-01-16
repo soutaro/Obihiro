@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (instancetype)referenceWithObject:(OBHViewControllerObject *)object {
-    return [[self alloc] initWithObject:object];
+    return [[OBHViewControllerObjectRef alloc] initWithObject:object];
 }
 
 - (instancetype)initWithObject:(OBHViewControllerObject *)object {

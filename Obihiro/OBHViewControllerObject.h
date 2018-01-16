@@ -119,7 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
  Run given block and then wait for a while.
  The wait inserted after block execution lets run Main Thread to do something associated action.
  */
-- (void)simulateUserAction:(void(^)())action;
+- (void)simulateUserAction:(void(^)(void))action;
 
 #pragma mark - Present/Dismiss
 
@@ -145,7 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Predicates
 
-- (OBHUIPredicate *)predicateWithTest:(BOOL(^)())test;
+- (OBHUIPredicate *)predicateWithTest:(BOOL(^)(void))test;
 
 #pragma mark - Utilities
 
@@ -170,16 +170,16 @@ NS_ASSUME_NONNULL_BEGIN
  Blocks until `test` returns true.
  Time out by `defaultTimeout`.
  */
-- (BOOL)waitFor:(BOOL(^)())test;
+- (BOOL)waitFor:(BOOL(^)(void))test;
 
-- (BOOL)eventually:(BOOL(^)())test;
-- (BOOL)eventuallyNot:(BOOL(^)())test;
+- (BOOL)eventually:(BOOL(^)(void))test;
+- (BOOL)eventuallyNot:(BOOL(^)(void))test;
 
-- (BOOL)eventuallyNil:(id(^)())test;
-- (BOOL)eventuallyNotNil:(id(^)())test;
+- (BOOL)eventuallyNil:(id(^)(void))test;
+- (BOOL)eventuallyNotNil:(id(^)(void))test;
 
-- (BOOL)globally:(BOOL(^)())test;
-- (BOOL)globallyNotNil:(id(^)())test;
+- (BOOL)globally:(BOOL(^)(void))test;
+- (BOOL)globallyNotNil:(id(^)(void))test;
 
 /**
  Blocks until `test` returns true.
@@ -187,10 +187,10 @@ NS_ASSUME_NONNULL_BEGIN
  Returns true when `test` is finally satisfied.
  Returns false when timed out.
  */
-+ (BOOL)waitFor:(BOOL (^)())test timeout:(NSTimeInterval)timeout;
++ (BOOL)waitFor:(BOOL (^)(void))test timeout:(NSTimeInterval)timeout;
 
-+ (BOOL)eventually:(BOOL(^)())test timeout:(NSTimeInterval)timeout;
-+ (BOOL)globally:(BOOL(^)())test forSeconds:(NSTimeInterval)seconds;
++ (BOOL)eventually:(BOOL(^)(void))test timeout:(NSTimeInterval)timeout;
++ (BOOL)globally:(BOOL(^)(void))test forSeconds:(NSTimeInterval)seconds;
 
 /**
  Returns true if there is no ViewController appearing/disappearing.
