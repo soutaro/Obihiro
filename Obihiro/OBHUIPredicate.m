@@ -6,13 +6,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OBHUIPredicate ()
 
 @property (nonatomic, weak) OBHViewControllerObject *object;
-@property (nonatomic, strong) BOOL (^test)();
+@property (nonatomic, strong) BOOL (^test)(void);
 
 @end
 
 @implementation OBHUIPredicate
 
-- (instancetype)initWithObject:(OBHViewControllerObject *)object test:(BOOL (^)())test {
+- (instancetype)initWithObject:(OBHViewControllerObject *)object test:(BOOL (^)(void))test {
     self = [self init];
     
     self.object = object;
